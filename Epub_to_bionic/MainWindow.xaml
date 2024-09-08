@@ -47,6 +47,9 @@
                 <TextBox x:Name="filePathTextBox" Width="400" Height="40" Margin="0,0,10,0" />
                 <Button x:Name="browseButton" Content="Select EPUB" Width="150" Height="50" Background="#444" Foreground="White" Click="BrowseButton_Click"/>
                 <Button x:Name="convertButton" Content="Convert Now" Width="150" Height="50" Background="DodgerBlue" Foreground="White" FontWeight="Bold" Click="ConvertButton_ClickAsync" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="10">
                 <Button x:Name="locateEpubButton" Content="Locate new EPUB" Width="250" Height="50" Background="MediumSeaGreen" Foreground="White" FontWeight="Bold" Click="LocateEpubButton_Click" Visibility="Collapsed"/>
             </StackPanel>
 
