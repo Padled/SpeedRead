@@ -1,0 +1,95 @@
+<Window
+    x:Class="Epub_to_bionic.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="EPUB to Bionic Reader">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="10">
+        <Grid.Background>
+            <SolidColorBrush Color="DarkSlateGray" />
+        </Grid.Background>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Spacing="15">
+            <!-- Logo and Header -->
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Image Source="logo_padled.png" Width="190" Height="190" Stretch="Uniform" />
+            </StackPanel>
+
+            <!-- Title Section -->
+            <TextBlock Text="SpeedRead" FontSize="32" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Center" />
+            <TextBlock Text="Convert EPUB to SpeedRead (Bionic)" FontSize="16" FontWeight="SemiBold" Foreground="#FFFFFF" 
+               HorizontalAlignment="Center" Margin="0,0,0,10" />
+
+            <!-- Toggle Button for Instructions -->
+            <ToggleButton x:Name="instructionsToggle" Content="Show/Hide Instructions" 
+                          Width="200" Height="40" Background="MediumSeaGreen" 
+                          Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" 
+                          Checked="InstructionsToggle_Checked" Unchecked="InstructionsToggle_Unchecked"/>
+
+            <!-- Instructions (Initially hidden, visibility controlled by ToggleButton) -->
+            <StackPanel x:Name="instructionsPanel" Background="SlateGray" Padding="20" CornerRadius="10" Visibility="Collapsed">
+                <TextBlock TextAlignment="Left" FontSize="13" Foreground="White">
+                    <Run FontWeight="Bold" FontSize="16" Text="Instructions"/><LineBreak/>
+                    <LineBreak/>
+                    <Run FontWeight="Bold" FontSize="12"  Text="Step 1:"/> Locate EPUB file using the Browse button below.<LineBreak/>
+                    <LineBreak/>
+                    <Run FontWeight="Bold" FontSize="12"  Text="Step 2:"/> Click "Convert Now" to convert your EPUB file to Bionic Reading format.<LineBreak/>
+                    <LineBreak/>
+                    <Run FontWeight="Bold" FontSize="12"  Text="Step 3:"/> Locate your new EPUB file. The new file will have "_bionic" appended to the original file name.
+                </TextBlock>
+            </StackPanel>
+
+            <!-- File Browse and Convert Buttons -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                <TextBox x:Name="filePathTextBox" Width="400" Height="40" Margin="0,0,10,0" />
+                <Button x:Name="browseButton" Content="Select EPUB" Width="150" Height="50" Background="#444" Foreground="White" Click="BrowseButton_Click"/>
+                <Button x:Name="convertButton" Content="Convert Now" Width="150" Height="50" Background="DodgerBlue" Foreground="White" FontWeight="Bold" Click="ConvertButton_ClickAsync" IsEnabled="False"/>
+                <Button x:Name="locateEpubButton" Content="Locate new EPUB" Width="250" Height="50" Background="MediumSeaGreen" Foreground="White" FontWeight="Bold" Click="LocateEpubButton_Click" Visibility="Collapsed"/>
+            </StackPanel>
+
+            <!-- Progress Ring -->
+            <ProgressRing x:Name="conversionProgressRing" IsActive="False" Width="50" Height="50" Foreground="DodgerBlue" Visibility="Collapsed" />
+        </StackPanel>
+
+        <!-- Full Width Footer with GitHub Repo in the Bottom Right -->
+        <Grid Background="SlateGray" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Padding="10" CornerRadius="10" Height="80">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <!-- Adjusted for left content -->
+                <ColumnDefinition Width="Auto"/>
+                <!-- Centered content (Made by PadLed) -->
+                <ColumnDefinition Width="1*"/>
+                <!-- Adjusted for right content -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Buy Me a Coffee Button -->
+            <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="10">
+                <Image Source="bmc-logo-no-background.png" Width="30" Height="30" Stretch="Uniform" />
+                <Button Content="Buy Me a Coffee" Click="BuyMeCoffeeLink_Click" Background="MediumSeaGreen" Foreground="White" 
+                BorderThickness="0" FontWeight="Bold"/>
+            </StackPanel>
+
+            <!-- Made by PadLed Button -->
+            <!-- Made by PadLed Button with Image and Text -->
+            <Button Grid.Column="1" Click="WebsiteLink_Click" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Background="Transparent">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                    <!-- Image -->
+                    <Image Source="light.png" Width="30" Height="30" Stretch="Uniform" />
+                    <!-- Text -->
+                    <TextBlock Text="Made by PadLed" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="#FFFFFF" />
+                </StackPanel>
+            </Button>
+
+            <!-- GitHub Repo Button aligned to the right -->
+            <Button Grid.Column="2" Click="OpenGitHubRepo_Click" Background="Transparent" BorderThickness="0" FontWeight="Bold" HorizontalAlignment="Right" 
+            VerticalAlignment="Center">
+                <Image Source="github-mark.png" Width="40" Height="40" Stretch="Uniform" />
+            </Button>
+        </Grid>
+
+
+    </Grid>
+</Window>
